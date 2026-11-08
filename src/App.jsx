@@ -3,6 +3,7 @@ import RegistroAccesos from './components/RegistroAccesos';
 import AforoActual from './components/AforoActual';
 import HistorialIngresos from './components/HistorialIngresos';
 import HorariosAdministrativos from './components/HorariosAdministrativos';
+import GestionPersonas from './pages/GestionPersonas';
 
 function App() {
   const [seccionActiva, setSeccionActiva] = useState('Inicio');
@@ -13,6 +14,7 @@ function App() {
     { nombre: 'Aforo actual', icono: 'bi-people' },
     { nombre: 'Historial de ingresos', icono: 'bi-clock-history' },
     { nombre: 'Horarios administrativos', icono: 'bi-calendar-check' },
+    { nombre: 'Gestión de personas', icono: 'bi-people-fill' },
   ];
 
   const opciones = [
@@ -43,6 +45,13 @@ function App() {
       icono: 'bi-calendar-week',
       color: 'info',
       seccion: 'Horarios administrativos',
+    },
+    {
+      titulo: 'Gestionar personas',
+      descripcion: 'Registrar y consultar usuarios del gimnasio',
+      icono: 'bi-people-fill',
+      color: 'primary',
+      seccion: 'Gestión de personas',
     },
   ];
 
@@ -91,7 +100,7 @@ function App() {
         <header className="recepcion-header">
           <div>
             <h4>{seccionActiva}</h4>
-            <p>Gym Assistant / Recepción</p>
+            <p>Gym Assistant / Administración</p>
           </div>
 
           <div className="header-user">
@@ -213,6 +222,12 @@ function App() {
 
           <section className="dashboard-content">
             <HorariosAdministrativos />
+          </section>
+
+        ) : seccionActiva === 'Gestión de personas' ? (
+
+          <section className="dashboard-content">
+            <GestionPersonas />
           </section>
 
         ) : (
