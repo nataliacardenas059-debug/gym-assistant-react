@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 
 const formularioVacio = {
   nombre_completo: '',
+  correo_institucional: '',
+  password: '',
   tipo_documento: 'CC',
   numero_documento: '',
   tipo_persona: 'estudiante',
@@ -25,6 +27,8 @@ function FormularioUsuario({ usuario, onGuardar, onCancelar }) {
         membresia_estado: esAdministrativo ? 'no_aplica' : (usuario.membresia_estado || 'sin_informacion'),
         membresia_tipo: usuario.membresia_tipo || 'mensual',
         membresia_fecha_fin: usuario.membresia_fecha_fin || '',
+        correo_institucional: usuario.correo_institucional || '',
+        password: '',
       });
     } else {
       setDatos(formularioVacio);
@@ -51,8 +55,18 @@ function FormularioUsuario({ usuario, onGuardar, onCancelar }) {
     evento.preventDefault();
     setError('');
 
-    if (!datos.nombre_completo.trim() || !datos.numero_documento.trim()) {
-      setError('Completa el nombre y el número de documento.');
+    if (!datos.nombre_completo.trim() || !datos.numero_documento.trim() || !datos.correo_institucional.trim()) {
+      setError('Completa el nombre, el correo institucional y el número de documento.');
+      return;
+    }
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(datos.correo_institucional.trim())) {
+      setError('Ingresa un correo institucional válido.');
+      return;
+    }
+
+    if (!usuario && datos.password.trim().length < 4) {
+      setError('La contraseña inicial debe tener al menos 4 caracteres.');
       return;
     }
 
@@ -75,6 +89,17 @@ function FormularioUsuario({ usuario, onGuardar, onCancelar }) {
         <div className="col-12">
           <label className="form-label" htmlFor="nombre_completo">Nombre completo</label>
           <input id="nombre_completo" name="nombre_completo" className="form-control" value={datos.nombre_completo} onChange={cambiar} placeholder="Ej. María Gómez" maxLength="100" required />
+        </div>
+
+        <div className="col-md-6">
+          <label className="form-label" htmlFor="correo_institucional">Correo institucional</label>
+          <input id="correo_institucional" name="correo_institucional" type="email" className="form-control" value={datos.correo_institucional} onChange={cambiar} placeholder="usuario@pascualbravo.edu.co" required />
+        </div>
+
+        <div className="col-md-6">
+          <label className="form-label" htmlFor="password">{usuario ? 'Nueva contraseña (opcional)' : 'Contraseña inicial'}</label>
+          <input id="password" name="password" type="password" className="form-control" value={datos.password} onChange={cambiar} placeholder={usuario ? 'Dejar vacío para conservar la actual' : 'Mínimo 4 caracteres'} minLength="4" required={!usuario} />
+          {usuario && <div className="form-text">Si no deseas cambiarla, deja este campo vacío.</div>}
         </div>
 
         <div className="col-md-4">

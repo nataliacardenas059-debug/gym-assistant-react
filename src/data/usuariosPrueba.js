@@ -2,6 +2,8 @@ export const usuariosPrueba = [
   {
     id: 1,
     nombre_completo: 'Carlos Pérez',
+    correo_institucional: 'c.perez001@pascualbravo.edu.co',
+    password: 'gym123',
     numero_documento: '1001234567',
     tipo_documento: 'CC',
     tipo_persona: 'estudiante',
@@ -18,6 +20,8 @@ export const usuariosPrueba = [
   {
     id: 2,
     nombre_completo: 'Laura Gómez',
+    correo_institucional: 'l.gomez002@pascualbravo.edu.co',
+    password: 'gym123',
     numero_documento: '1002345678',
     tipo_documento: 'CC',
     tipo_persona: 'estudiante',
@@ -34,6 +38,8 @@ export const usuariosPrueba = [
   {
     id: 3,
     nombre_completo: 'Andrés Rodríguez',
+    correo_institucional: 'a.rodriguez003@pascualbravo.edu.co',
+    password: 'gym123',
     numero_documento: '1003456789',
     tipo_documento: 'CC',
     tipo_persona: 'administrativo',

@@ -1,11 +1,15 @@
 import { useState } from 'react';
+import { Navigate, Route, Routes } from 'react-router-dom';
+import { useAuth, RutaProtegida, LoginPage, UsuarioPage } from './modules/acceso';
 import RegistroAccesos from './components/RegistroAccesos';
 import AforoActual from './components/AforoActual';
 import HistorialIngresos from './components/HistorialIngresos';
 import HorariosAdministrativos from './components/HorariosAdministrativos';
 import GestionPersonas from './pages/GestionPersonas';
 
-function App() {
+function RecepcionApp() {
+  const { usuario, salir } = useAuth();
+  const nombreRecepcion = usuario?.nombre || 'Recepcionista';
   const [seccionActiva, setSeccionActiva] = useState('Inicio');
 
   const menu = [
@@ -88,7 +92,7 @@ function App() {
         <div className="sidebar-footer">
           <i className="bi bi-person-circle"></i>
           <div>
-            <strong>Recepcionista</strong>
+            <strong>{nombreRecepcion}</strong>
             <small>Panel de recepción</small>
           </div>
         </div>
@@ -105,7 +109,8 @@ function App() {
 
           <div className="header-user">
             <i className="bi bi-person-circle"></i>
-            <span>Recepcionista</span>
+            <span>{nombreRecepcion}</span>
+            <button className="btn btn-outline-secondary btn-sm ms-3" onClick={salir}>Cerrar sesión</button>
           </div>
         </header>
 
@@ -258,6 +263,24 @@ function App() {
 
       </main>
     </div>
+  );
+}
+
+function App() {
+  return (
+    <Routes>
+      <Route path="/login" element={<LoginPage />} />
+      <Route
+        path="/recepcion"
+        element={<RutaProtegida roles={['admin']}><RecepcionApp /></RutaProtegida>}
+      />
+      <Route
+        path="/usuario"
+        element={<RutaProtegida roles={['usuario']}><UsuarioPage /></RutaProtegida>}
+      />
+      <Route path="/" element={<Navigate to="/login" replace />} />
+      <Route path="*" element={<Navigate to="/login" replace />} />
+    </Routes>
   );
 }
 

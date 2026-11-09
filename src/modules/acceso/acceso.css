@@ -1,0 +1,341 @@
+/* GymAssistant - estilos del módulo de acceso.
+   Paleta alineada con recepción y gestión de personas. */
+
+:root {
+  --acc-azul: #173b56;
+  --acc-azul-medio: #28627c;
+  --acc-turquesa: #73c6b6;
+  --acc-fondo: #f4f6f9;
+  --acc-texto: #263445;
+  --acc-muted: #758293;
+  --acc-borde: #e5e9ee;
+  --acc-blanco: #ffffff;
+}
+
+/* ---------- INICIO DE SESIÓN ---------- */
+.acc-login-body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+  background: linear-gradient(120deg, var(--acc-azul), var(--acc-azul-medio));
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--acc-texto);
+}
+
+.acc-login-card {
+  width: 420px;
+  max-width: 100%;
+  padding: 38px 36px;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  border-radius: 14px;
+  background: var(--acc-blanco);
+  box-shadow: 0 16px 40px rgba(8, 31, 48, 0.22);
+  text-align: center;
+}
+
+.acc-login-card h2 {
+  margin: 0 0 9px;
+  color: var(--acc-azul);
+  font-size: 25px;
+  font-weight: 700;
+}
+
+.acc-login-card p {
+  margin: 0 0 22px;
+  color: var(--acc-muted);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.acc-login-card form {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+}
+
+.acc-login-card input {
+  width: 100%;
+  min-height: 46px;
+  margin: 0;
+  padding: 12px 14px;
+  border: 1px solid #d7dfe6;
+  border-radius: 8px;
+  background: #fff;
+  color: var(--acc-texto);
+  font-size: 14px;
+  box-sizing: border-box;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.acc-login-card input::placeholder { color: #9aa6b2; }
+.acc-login-card input:focus {
+  outline: none;
+  border-color: var(--acc-turquesa);
+  box-shadow: 0 0 0 3px rgba(115, 198, 182, 0.2);
+}
+
+.acc-btn-primary {
+  width: 100%;
+  min-height: 46px;
+  margin-top: 3px;
+  padding: 12px 16px;
+  border: 1px solid var(--acc-azul);
+  border-radius: 8px;
+  background: var(--acc-azul);
+  color: white;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s, transform 0.2s;
+}
+
+.acc-btn-primary:hover:not(:disabled) {
+  border-color: var(--acc-azul-medio);
+  background: var(--acc-azul-medio);
+  transform: translateY(-1px);
+}
+.acc-btn-primary:disabled { opacity: 0.65; cursor: wait; }
+.acc-login-card .acc-error { margin: 15px 0 0; color: #c0392b; font-size: 13px; }
+.acc-login-card .acc-demo {
+  margin: 20px 0 0;
+  padding-top: 14px;
+  border-top: 1px solid var(--acc-borde);
+  color: #8793a1;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+/* ---------- PORTAL DEL USUARIO ---------- */
+.acc-layout {
+  display: flex;
+  min-height: 100vh;
+  background: var(--acc-fondo);
+  color: var(--acc-texto);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.acc-sidebar {
+  width: 255px;
+  min-width: 255px;
+  padding: 24px 16px;
+  display: flex;
+  flex-direction: column;
+  background: var(--acc-azul);
+  color: white;
+}
+
+.acc-sidebar h2 {
+  margin: 8px 8px 40px;
+  color: white;
+  font-size: 18px;
+  font-weight: 700;
+  text-align: left;
+}
+
+.acc-nav-btn {
+  width: 100%;
+  margin: 0 0 7px;
+  padding: 13px 12px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: #d7e2eb;
+  text-align: left;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.acc-nav-btn:hover,
+.acc-nav-btn.activo {
+  background: #285675;
+  color: white;
+}
+.acc-nav-btn.activo { box-shadow: inset 3px 0 0 var(--acc-turquesa); font-weight: 700; }
+
+.acc-logout {
+  margin-top: auto;
+  padding-top: 18px;
+  border-top: 1px solid #426078;
+}
+
+.acc-btn-logout {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.09);
+  color: white;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.acc-btn-logout:hover { background: rgba(255, 255, 255, 0.18); }
+
+.acc-main {
+  flex: 1;
+  min-width: 0;
+  padding: 30px 32px;
+}
+
+.acc-top {
+  min-height: 58px;
+  margin: -30px -32px 30px;
+  padding: 17px 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: white;
+  border-bottom: 1px solid var(--acc-borde);
+}
+
+.acc-top h1 {
+  margin: 0 0 4px;
+  color: var(--acc-texto);
+  font-size: 19px;
+  font-weight: 700;
+}
+.acc-top p { margin: 0; color: #8793a1; font-size: 12px; }
+
+.acc-badge {
+  display: inline-block;
+  margin-left: 9px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: #e5f5f1;
+  color: #286b60;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: capitalize;
+  vertical-align: middle;
+}
+
+.acc-seccion { animation: acc-fade 0.25s ease; }
+.acc-seccion > h2 {
+  margin: 0 0 18px;
+  color: var(--acc-texto);
+  font-size: 19px;
+  font-weight: 700;
+}
+
+.acc-card {
+  margin-bottom: 20px;
+  padding: 22px;
+  border: 1px solid #e9edf1;
+  border-radius: 10px;
+  background: white;
+  box-shadow: 0 2px 8px rgba(23, 59, 86, 0.04);
+}
+.acc-card h3 { margin: 0 0 15px; color: var(--acc-azul); font-size: 17px; font-weight: 700; }
+.acc-card p { margin: 0 0 10px; color: var(--acc-texto); font-size: 14px; line-height: 1.5; }
+
+.acc-welcome {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 24px;
+  padding: 30px 32px;
+  border-radius: 12px;
+  background: linear-gradient(120deg, var(--acc-azul), var(--acc-azul-medio));
+  color: white;
+  box-shadow: 0 4px 12px rgba(23, 59, 86, 0.1);
+}
+.acc-welcome h2 { margin: 0 0 12px; color: white; font-size: 23px; font-weight: 700; }
+.acc-welcome p { margin: 0 0 9px; color: #d6e5ec; font-size: 13px; line-height: 1.55; }
+.acc-welcome p strong { color: white; }
+
+.acc-btn-secondary {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 10px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.12);
+  color: white;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.acc-btn-secondary:hover { background: rgba(255, 255, 255, 0.22); color: white; }
+
+.acc-tabla-wrap {
+  overflow-x: auto;
+  border: 1px solid #e9edf1;
+  border-radius: 10px;
+  background: white;
+}
+.acc-tabla {
+  width: 100%;
+  margin: 0;
+  border-collapse: collapse;
+  background: white;
+  color: var(--acc-texto);
+  font-size: 13px;
+}
+.acc-tabla thead { background: #edf3f6; color: var(--acc-azul); }
+.acc-tabla th,
+.acc-tabla td {
+  padding: 14px 16px;
+  border-bottom: 1px solid #e9edf1;
+  text-align: left;
+}
+.acc-tabla th { font-size: 12px; font-weight: 700; }
+.acc-tabla tbody tr:last-child td { border-bottom: 0; }
+.acc-tabla tbody tr:hover { background: #f5faf9; }
+
+/* Modo oscuro conservado y adaptado a la paleta */
+.acc-oscuro { background: #15232d; color: #e8eef2; }
+.acc-oscuro .acc-main { background: #15232d; }
+.acc-oscuro .acc-top { background: #1c303d; border-bottom-color: #344956; }
+.acc-oscuro .acc-top h1,
+.acc-oscuro .acc-seccion > h2 { color: #e8eef2; }
+.acc-oscuro .acc-top p { color: #b5c3cc; }
+.acc-oscuro .acc-card { background: #203541; border-color: #344956; color: #e8eef2; }
+.acc-oscuro .acc-card h3,
+.acc-oscuro .acc-card p { color: #e8eef2; }
+.acc-oscuro .acc-tabla-wrap { border-color: #344956; }
+.acc-oscuro .acc-tabla { background: #203541; color: #e8eef2; }
+.acc-oscuro .acc-tabla thead { background: #294553; color: white; }
+.acc-oscuro .acc-tabla td { border-bottom-color: #344956; }
+.acc-oscuro .acc-tabla tbody tr:hover { background: #294553; }
+
+@keyframes acc-fade {
+  from { opacity: 0; transform: translateY(7px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 900px) {
+  .acc-sidebar { width: 225px; min-width: 225px; }
+  .acc-main { padding: 24px; }
+  .acc-top { margin: -24px -24px 24px; padding: 16px 24px; }
+}
+
+@media (max-width: 700px) {
+  .acc-layout { flex-direction: column; }
+  .acc-sidebar {
+    width: 100%;
+    min-width: 0;
+    padding: 12px;
+    flex-direction: row;
+    align-items: center;
+    gap: 7px;
+    overflow-x: auto;
+  }
+  .acc-sidebar h2 { display: none; }
+  .acc-nav-btn { width: auto; min-width: max-content; margin: 0; padding: 10px 12px; white-space: nowrap; }
+  .acc-logout { margin: 0 0 0 auto; padding: 0; border: 0; }
+  .acc-btn-logout { width: auto; min-width: max-content; padding: 10px 12px; }
+  .acc-main { padding: 20px 16px; }
+  .acc-top { margin: -20px -16px 20px; padding: 15px 16px; }
+  .acc-welcome { padding: 24px 20px; }
+  .acc-welcome h2 { font-size: 20px; }
+  .acc-card { padding: 18px; }
+}
+
+@media (max-width: 420px) {
+  .acc-login-card { padding: 30px 22px; }
+  .acc-login-card h2 { font-size: 22px; }
+}
